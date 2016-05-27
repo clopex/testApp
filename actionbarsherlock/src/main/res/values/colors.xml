@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="holo_primary">#2d2dc5</color>
+    <color name="holo_primary_dark">#0517be</color>
+    <color name="background_holo_dark">#fdfdfe</color>
+    <color name="bright_foreground_holo_dark">#727272</color>
+    <color name="black">#04128f</color>
+    <color name="screen_background_dark">#f9f9fb</color>
+    <color name="bright_foreground_holo_light">#5d55fb</color>
+    <color name="bright_foreground_disabled_holo_light">#dfdbdb</color>
+    <color name="dim_foreground_holo_light">#7074f6</color>
+    <color name="dim_foreground_disabled_holo_light">#809eb7f8</color>
+    <color name="bright_foreground_disabled_holo_dark">#3d3d3d</color>
+</resources>

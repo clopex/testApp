@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/back">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:id="@+id/tvEmail"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edittext_round_cornor"
+        android:hint="Email"
+        android:drawableLeft="@drawable/mail"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:maxLines="1"
+        android:paddingRight="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColorHint="#dbdbdb" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:id="@+id/tvPwd"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/pwd"
+        android:background="@drawable/edittext_round_cornor"
+        android:hint="Password"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:maxLines="1"
+        android:gravity="center"
+        android:paddingRight="50dp"
+        android:layout_below="@+id/tvEmail"
+        android:layout_alignLeft="@+id/tvEmail"
+        android:layout_alignStart="@+id/tvEmail"
+        android:layout_alignRight="@+id/tvEmail"
+        android:layout_alignEnd="@+id/tvEmail"
+        android:layout_marginTop="15dp"
+        android:textColorHint="#dbdbdb" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="LOGIN"
+        android:id="@+id/btnLogin"
+        android:background="@drawable/red_button"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textColor="#ff4100"
+        android:layout_below="@+id/tvPwd"
+        android:layout_marginTop="91dp"
+        android:layout_alignLeft="@+id/tvPwd"
+        android:layout_alignStart="@+id/tvPwd"
+        android:layout_alignRight="@+id/tvPwd"
+        android:layout_alignEnd="@+id/tvPwd"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/tvEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="65dp"
+        android:background="@drawable/logo" />
+
+</RelativeLayout>
