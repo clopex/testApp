@@ -130,7 +130,6 @@
         <activity
             android:name="com.morestudio.littledot.doctor.ui.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTask"
             android:theme="@style/DarkTheme"
             android:uiOptions="splitActionBarWhenNarrow" >
             <intent-filter>

@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
         long accountId = intent.getLongExtra(SipProfile.FIELD_ID, SipProfile.INVALID_ID);
         account = SipProfile.getProfileFromDbId(this, accountId, DBProvider.ACCOUNT_FULL_PROJECTION);
         WizardUtils.WizardInfo wizardInfo = WizardUtils.getWizardClass(wId);
-
+        //startSipService();
         try {
             wizard = (WizardIface) wizardInfo.classObject.newInstance();
         } catch (IllegalAccessException e) {
@@ -102,13 +102,13 @@ public class MainActivity extends Activity {
         m_btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            m_strEmail = m_tvEmail.getText().toString();
-            m_strPwd = m_tvPwd.getText().toString();
-            if(m_strEmail.equals("") || m_strPwd.equals("")){
-                Toast.makeText(getApplicationContext(), "please enter email and password", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            new GetResult().execute();
+                m_strEmail = m_tvEmail.getText().toString();
+                m_strPwd = m_tvPwd.getText().toString();
+                if(m_strEmail.equals("") || m_strPwd.equals("")){
+                    Toast.makeText(getApplicationContext(), "please enter email and password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                new GetResult().execute();
             }
         });
     }
@@ -127,9 +127,16 @@ public class MainActivity extends Activity {
             String strResult = GetResultInfo(SERVER_URL_PATCH_INFO, strToken);
             try {
                 m_objPatchInfo = new JSONObject(strResult);
-                if(m_objPatchInfo.getString("message")=="Missing token"){
-                    return "ErrorGettingInfo";
+                String checkEndpoint = m_objPatchInfo.getString("sip_endpoint");
+                String checkPass = m_objPatchInfo.getString("sip_password");
+
+                if (checkEndpoint == "null" || checkPass == "null"){
+                    return "error";
                 }
+
+                /*if(m_objPatchInfo.getString("message")=="Missing token"){
+                    return "ErrorGettingInfo";
+                }*/
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -137,14 +144,18 @@ public class MainActivity extends Activity {
             return "success";
         }
         protected void onPostExecute(String feed) {
+            if (feed == "error"){
+                Toast.makeText(getApplicationContext(), "VoIP not configured for your account. Please contact administrator.", Toast.LENGTH_LONG).show();
+            }
+
             if(feed == "TokenFailed"){
                 Toast.makeText(getApplicationContext(), "Could not find user with email "+m_strEmail +"or Password is not correct", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(feed == "ErrorGettingInfo"){
+            /*if(feed == "ErrorGettingInfo"){
                 Toast.makeText(getApplicationContext(), "Could not get any info of user with your account data.", Toast.LENGTH_SHORT).show();
                 return;
-            }
+            }*/
             if(feed == "success"){
                 finish();
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
@@ -190,6 +201,7 @@ public class MainActivity extends Activity {
         try {
             JSONObject obj = new JSONObject(result);
             ret = obj.getString("access_token");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
