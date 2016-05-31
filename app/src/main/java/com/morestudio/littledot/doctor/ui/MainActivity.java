@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -62,6 +64,9 @@ public class MainActivity extends Activity {
     private String m_strPwd;
     private String wizardId = "";
 
+    SharedPreferences.Editor editor;
+    SharedPreferences preferences;
+
     private JSONObject m_objPatchInfo;
     private WizardIface wizard = null;
     protected SipProfile account = null;
@@ -75,6 +80,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         m_activity = getParent();
 
@@ -234,6 +241,10 @@ public class MainActivity extends Activity {
     private String getB64Auth (String login, String pass) {
         String source=login+":"+pass;
         String ret="Basic "+ Base64.encodeToString(source.getBytes(), Base64.URL_SAFE | Base64.NO_WRAP);
+        editor = preferences.edit();
+        editor.putString("token", ret);
+        editor.apply();
+        //Log.i("Testni Token: ", preferences.getString("token", ""));
         return ret;
     }
     private static String getStringFromInputStream(InputStream is) {

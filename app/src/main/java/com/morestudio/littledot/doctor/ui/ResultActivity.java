@@ -8,15 +8,19 @@ import android.widget.Button;
 
 import com.morestudio.littledot.doctor.R;
 import com.morestudio.littledot.doctor.api.SipManager;
+import com.morestudio.littledot.doctor.service.PingDocService;
 
 public class ResultActivity extends Activity {
 
     private Button m_btnSetting;
-    private Button m_btnLogout;
+    private Button m_btnLogout, btnTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        Intent intent = new Intent(ResultActivity.this, PingDocService.class);
+        ResultActivity.this.startService(intent);
 
         m_btnSetting = (Button)findViewById(R.id.btnSetting);
         m_btnSetting.setOnClickListener(new View.OnClickListener() {
@@ -36,5 +40,12 @@ public class ResultActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        Intent intent = new Intent(ResultActivity.this, PingDocService.class);
+        ResultActivity.this.stopService(intent);
+        super.onDestroy();
     }
 }
