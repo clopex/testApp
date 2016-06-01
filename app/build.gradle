@@ -12,6 +12,10 @@ android {
     }
     buildTypes {
         release {
+            lintOptions {
+                disable 'MissingTranslation'
+                checkReleaseBuilds false
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

@@ -22,8 +22,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:textColorHint="#dbdbdb"
-        android:text="fpkodzg@gmail.com" />
+        android:textColorHint="#dbdbdb" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -45,8 +44,7 @@
         android:layout_alignRight="@+id/tvEmail"
         android:layout_alignEnd="@+id/tvEmail"
         android:layout_marginTop="15dp"
-        android:textColorHint="#dbdbdb"
-        android:text="aaaaaa" />
+        android:textColorHint="#dbdbdb" />
 
     <Button
         android:layout_width="wrap_content"
