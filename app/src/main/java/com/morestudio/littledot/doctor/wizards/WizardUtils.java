@@ -133,7 +133,7 @@ public class WizardUtils {
 		//Generic
 		if(CustomDistribution.distributionWantsGeneric(BASIC_WIZARD_TAG)) {
     		WIZARDS_DICT.put(BASIC_WIZARD_TAG, new WizardInfo(BASIC_WIZARD_TAG, "Basic", 
-    				R.drawable.ic_wizard_basic, 50, 
+    				R.drawable.ic_face_black_48dp, 50,
     				new Locale[] {}, true, false, 
     				Basic.class));
 		}

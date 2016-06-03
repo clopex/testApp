@@ -50,8 +50,8 @@ public class RegistrationNotification extends RemoteViews {
 
     private static final Integer[] texts = new Integer[] {
             R.id.account_label1,
-            R.id.account_label2,
-            R.id.account_label3,
+            //R.id.account_label2,
+           // R.id.account_label3,
     };
 
     public RegistrationNotification(String aPackageName) {

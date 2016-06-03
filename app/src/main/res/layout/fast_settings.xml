@@ -66,12 +66,13 @@
                     android:textColor="?android:attr/textColorSecondary" />
 
                 <CheckBox
-                    android:id="@id/glob_integrate"
+                    android:id="@+id/glob_integrate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="6dip" />
+                    android:layout_margin="6dip"
+                    android:checked="true" />
             </RelativeLayout>
 
             <TextView
@@ -109,12 +110,13 @@
                     android:textColor="?android:attr/textColorSecondary" />
 
                 <RadioButton
-                    android:id="@id/glob_profile_always"
+                    android:id="@+id/glob_profile_always"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="6dip" />
+                    android:layout_margin="6dip"
+                    android:checked="true" />
             </RelativeLayout>
 
             <View
@@ -156,7 +158,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="6dip" />
+                    android:layout_margin="6dip"
+                    android:checked="false" />
             </RelativeLayout>
 
             <View
@@ -198,7 +201,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="6dip" />
+                    android:layout_margin="6dip"
+                    android:checked="false" />
             </RelativeLayout>
             <!-- 3G -->
 
@@ -241,7 +245,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="6dip" />
+                    android:layout_margin="6dip"
+                    android:checked="true" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

@@ -883,9 +883,7 @@ public class SipHome extends SherlockFragmentActivity implements OnWarningChange
             finish();
         }
     }
-    
-    
-    
+
     
     // Warning view
     

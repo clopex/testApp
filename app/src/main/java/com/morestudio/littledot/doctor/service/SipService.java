@@ -91,7 +91,7 @@ import java.util.regex.Pattern;
 
 public class SipService extends Service {
 
-	
+
 	// static boolean creating = false;
 	private static final String THIS_FILE = "SIP SRV";
 

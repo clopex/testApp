@@ -74,7 +74,7 @@ public class PrefsFast extends SherlockActivity implements OnClickListener {
 		findViewById(R.id.row_glob_profile_wifi).setOnClickListener(this);
 		findViewById(R.id.row_glob_profile_never).setOnClickListener(this);
 		findViewById(R.id.row_glob_tg).setOnClickListener(this);
-		
+
 		updateFromPrefs();
 	}
 	
@@ -87,25 +87,26 @@ public class PrefsFast extends SherlockActivity implements OnClickListener {
 	
 	private void updateFromPrefs() {
 		globIntegrate.setChecked(SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.INTEGRATE_WITH_DIALER));
-		boolean tgIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_3G_IN, false);
-		boolean tgOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_3G_OUT, false);
-		boolean gprsIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_GPRS_IN, false);
-		boolean gprsOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_GPRS_OUT, false);
-		boolean edgeIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_EDGE_IN, false);
-		boolean edgeOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_EDGE_OUT, false);
+		boolean tgIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_3G_IN, true);
+		boolean tgOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_3G_OUT, true);
+		boolean gprsIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_GPRS_IN, true);
+		boolean gprsOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_GPRS_OUT, true);
+		boolean edgeIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_EDGE_IN, true);
+		boolean edgeOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_EDGE_OUT, true);
 		boolean wifiIn = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_WIFI_IN, true);
 		boolean wifiOut = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.USE_WIFI_OUT, true);
-		
+
 		boolean useGsmIn = (tgIn || gprsIn || edgeIn);
 		boolean useGsmOut = (tgOut || gprsOut || edgeOut);
-		
+
 		boolean useGsm = useGsmIn || useGsmOut ;
 		boolean lockWifi = SipConfigManager.getPreferenceBooleanValue(this, SipConfigManager.LOCK_WIFI, true);
-		
+
 		globGsm.setChecked( useGsm );
-		
+        //globGsm.setChecked( true );
+
 		Profile mode = Profile.UNKOWN;
-		
+
 		if( ( !useGsm && wifiIn && wifiOut && lockWifi) ||
 			(  useGsm && wifiIn && wifiOut && tgIn && tgOut && gprsIn && gprsOut && edgeIn && edgeOut )) {
 			mode = Profile.ALWAYS;
@@ -114,7 +115,7 @@ public class PrefsFast extends SherlockActivity implements OnClickListener {
 		} else if (!wifiIn && !useGsmIn) {
 			mode = Profile.NEVER;
 		}
-		
+
 		setProfile(mode);
 	}
 

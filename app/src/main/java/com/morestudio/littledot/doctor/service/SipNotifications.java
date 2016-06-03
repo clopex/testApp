@@ -47,6 +47,7 @@ import com.morestudio.littledot.doctor.api.SipProfile;
 import com.morestudio.littledot.doctor.api.SipProfileState;
 import com.morestudio.littledot.doctor.api.SipUri;
 import com.morestudio.littledot.doctor.models.CallerInfo;
+import com.morestudio.littledot.doctor.ui.ResultActivity;
 import com.morestudio.littledot.doctor.utils.Compatibility;
 import com.morestudio.littledot.doctor.utils.CustomDistribution;
 import com.morestudio.littledot.doctor.utils.Log;
@@ -225,37 +226,46 @@ public class SipNotifications {
 			Log.e(THIS_FILE, "Trying to create a service notification from outside the service");
 			return;
 		}
-		int icon = R.drawable.ic_stat_sipok;
+		int icon = R.drawable.ic_face_black_48dp;
 		CharSequence tickerText = context.getString(R.string.service_ticker_registered_text);
 		long when = System.currentTimeMillis();
 		
 
         Builder nb = new NotificationCompat.Builder(context);
         nb.setSmallIcon(icon);
+        nb.setContentTitle("LittleDot Doctor");
+        nb.setContentText("Client Active");
         nb.setTicker(tickerText);
         nb.setWhen(when);
-		Intent notificationIntent = new Intent(SipManager.ACTION_SIP_DIALER);
+		/**test kod**/
+
+		Intent intent = new Intent(context, ResultActivity.class);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, (int) when, intent, 0);
+
+
+		/**kraj test koda**/
+		/*Intent notificationIntent = new Intent(SipManager.ACTION_SIP_DIALER);
 		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);*/
 		
-		RegistrationNotification contentView = new RegistrationNotification(context.getPackageName());
+		/*RegistrationNotification contentView = new RegistrationNotification(context.getPackageName());
 		contentView.clearRegistrations();
 		if(!Compatibility.isCompatible(9)) {
 		    contentView.setTextsColor(notificationPrimaryTextColor);
 		}
-		contentView.addAccountInfos(context, activeAccountsInfos);
+		contentView.addAccountInfos(context, activeAccountsInfos);*/
 
 		// notification.setLatestEventInfo(context, contentTitle,
 		// contentText, contentIntent);
 		nb.setOngoing(true);
 		nb.setOnlyAlertOnce(true);
-        nb.setContentIntent(contentIntent);
-        nb.setContent(contentView);
+        nb.setContentIntent(pendingIntent);
+        //nb.setContent(contentView);
 		
 		Notification notification = nb.build();
 		notification.flags |= Notification.FLAG_NO_CLEAR;
 		// We have to re-write content view because getNotification setLatestEventInfo implicitly
-        notification.contentView = contentView;
+        //notification.contentView = contentView;
 		if (showNumbers) {
             // This only affects android 2.3 and lower
             notification.number = activeAccountsInfos.size();

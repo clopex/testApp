@@ -109,6 +109,8 @@ public class MainActivity extends Activity {
         m_btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                startSipService();
                 m_strEmail = m_tvEmail.getText().toString();
                 m_strPwd = m_tvPwd.getText().toString();
                 if(m_strEmail.equals("") || m_strPwd.equals("")){
@@ -351,7 +353,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        startSipService();
+        //startSipService();
     }
     private void startSipService() {
         Thread t = new Thread("StartSip") {
