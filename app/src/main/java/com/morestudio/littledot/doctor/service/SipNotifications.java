@@ -315,7 +315,7 @@ public class SipNotifications {
 	public void showNotificationForCall(SipCallSession callInfo) {
 		// This is the pending call notification
 		// int icon = R.drawable.ic_incall_ongoing;
-		@SuppressWarnings("deprecation")
+		/*@SuppressWarnings("deprecation")
         int icon = android.R.drawable.stat_sys_phone_call;
 		CharSequence tickerText = context.getText(R.string.ongoing_call);
 		long when = System.currentTimeMillis();
@@ -337,11 +337,11 @@ public class SipNotifications {
 
 		Notification notification = inCallNotification.build();
 		notification.flags |= Notification.FLAG_NO_CLEAR;
-		notificationManager.notify(CALL_NOTIF_ID, notification);
+		notificationManager.notify(CALL_NOTIF_ID, notification);*/
 	}
 
 	public void showNotificationForMissedCall(ContentValues callLog) {
-		int icon = android.R.drawable.stat_notify_missed_call;
+		/*int icon = android.R.drawable.stat_notify_missed_call;
 		CharSequence tickerText = context.getText(R.string.missed_call);
 		long when = System.currentTimeMillis();
 
@@ -365,11 +365,11 @@ public class SipNotifications {
 		missedCallNotification.setContentText(formatRemoteContactString(remoteContact));
 		missedCallNotification.setContentIntent(contentIntent);
 		
-		notificationManager.notify(CALLLOG_NOTIF_ID, missedCallNotification.build());
+		notificationManager.notify(CALLLOG_NOTIF_ID, missedCallNotification.build());*/
 	}
 
 	public void showNotificationForMessage(SipMessage msg) {
-		if (!CustomDistribution.supportMessaging()) {
+		/*if (!CustomDistribution.supportMessaging()) {
 			return;
 		}
 		// CharSequence tickerText = context.getText(R.string.instance_message);
@@ -401,11 +401,11 @@ public class SipNotifications {
 			messageNotification.setContentIntent(contentIntent);
 			
 			notificationManager.notify(MESSAGE_NOTIF_ID, messageNotification.build());
-		}
+		}*/
 	}
 
     public void showNotificationForVoiceMail(SipProfile acc, int numberOfMessages) {
-        if (messageVoicemail == null) {
+        /*if (messageVoicemail == null) {
 
             messageVoicemail = new NotificationCompat.Builder(context);
             messageVoicemail.setSmallIcon(android.R.drawable.stat_notify_voicemail);
@@ -446,7 +446,7 @@ public class SipNotifications {
         if (contentIntent != null) {
             messageVoicemail.setContentIntent(contentIntent);
             notificationManager.notify(VOICEMAIL_NOTIF_ID, messageVoicemail.build());
-        }
+        }*/
     }
 
 	private static String viewingRemoteFrom = null;
