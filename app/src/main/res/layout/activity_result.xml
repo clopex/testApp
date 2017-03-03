@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/back">
+    android:background="@drawable/background_new">
 
     <TextView
         android:layout_width="fill_parent"
@@ -19,29 +19,88 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="150dp" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:src="@drawable/mycall"
+                android:id="@+id/btnCalls"
+                android:scaleType="centerInside"
+                android:layout_weight="1"
+                android:layout_centerHorizontal="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <TextView
+                android:text="My Calls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMyCall"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_below="@+id/btnCalls"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:src="@drawable/mysms"
+                android:id="@+id/btnSms"
+                android:scaleType="centerInside"
+                android:layout_weight="1"
+                android:layout_centerHorizontal="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+            <TextView
+                android:text="My Messages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMySms"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_below="@+id/btnSms"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
     <Button
-        android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="LOG OUT"
         android:id="@+id/btnLogout"
-        android:background="@drawable/red_button"
+        android:background="@drawable/logout_new"
         android:gravity="center"
-        android:textSize="18dp"
-        android:textColor="#ff4100"
+        android:textSize="18sp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="44dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp" />
+        android:layout_width="200dp" />
 
     <Button
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/btnSetting"
-        android:background="@drawable/setting"
+        android:background="@drawable/settings_new"
         android:gravity="center"
         android:textSize="18dp"
         android:textColor="#ffffff"

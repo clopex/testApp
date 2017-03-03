@@ -1180,7 +1180,9 @@ public class PjSipService {
             cs.setVid_cnt(prefsWrapper.getPreferenceBooleanValue(SipConfigManager.USE_VIDEO) ? 1
                     : 0);
             cs.setFlag(0);
+            Log.v("ade", String.valueOf(callId));
             return pjsua.call_answer2(callId, cs, code, null, null);
+
             // return pjsua.call_answer(callId, code, null, null);
         }
         return -1;

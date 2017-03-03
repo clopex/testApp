@@ -115,4 +115,8 @@
     <string name="uri_im">IM with custom SIP scheme</string>
     <string name="uri_sip">Internet call</string>
 
+    <!-- Reslut Activity -->
+    <string name="logout">LOGOUT</string>
+    <string name="mycall">My Calls</string>
+    <string name="mysms">My SMS</string>
 </resources>

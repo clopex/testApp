@@ -66,8 +66,9 @@ public class MainActivity extends Activity {
 
     SharedPreferences.Editor editor;
     SharedPreferences preferences;
+    String NONCE;
 
-    private JSONObject m_objPatchInfo;
+    private JSONObject m_objPatchInfo, nonce_ObjJson;
     private WizardIface wizard = null;
     protected SipProfile account = null;
     private final String wId = "BASIC";
@@ -134,10 +135,14 @@ public class MainActivity extends Activity {
             }
 
             String strResult = GetResultInfo(SERVER_URL_PATCH_INFO, strToken);
+            String nonce_api = GetResultInfo("http://littledot.flipkod.com/api/users/one_time_login", strToken);
             try {
                 m_objPatchInfo = new JSONObject(strResult);
                 String checkEndpoint = m_objPatchInfo.getString("sip_endpoint");
                 String checkPass = m_objPatchInfo.getString("sip_password");
+                nonce_ObjJson = new JSONObject(nonce_api);
+
+                NONCE = nonce_ObjJson.getString("nonce");
 
                 if (checkEndpoint == "null" || checkPass == "null"){
                     return "error";
@@ -168,6 +173,8 @@ public class MainActivity extends Activity {
             if(feed == "success"){
                 finish();
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                //Log.v("Prenos", strToken);
+                intent.putExtra("nonce", NONCE);
                 startActivity(intent);
             }
         }
@@ -214,6 +221,7 @@ public class MainActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.v("TAG2", ret);
         return ret;
     }
     private String GetResultInfo(String uri, String token){
@@ -236,7 +244,7 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.e("TAG", "result: " + result);
+        Log.e("TAG2", "resultAA: " + result);
         return result;
     }
     @TargetApi(Build.VERSION_CODES.FROYO)

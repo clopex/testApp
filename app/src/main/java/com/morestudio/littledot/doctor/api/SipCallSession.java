@@ -28,6 +28,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
 
+import com.morestudio.littledot.doctor.utils.Log;
+
 /**
  * Represents state of a call session<br/>
  * This class helps to serialize/deserialize the state of the media layer <br/>
